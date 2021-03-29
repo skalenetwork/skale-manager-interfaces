@@ -7,7 +7,7 @@
   "license": "AGPL-3.0",
   "files": [
     "**/*.sol",
-    "/artifacts/contracts/**/*.json"
+    "/artifacts/contracts/*.json"
   ],
   "dependencies": {},
   "devDependencies": {
