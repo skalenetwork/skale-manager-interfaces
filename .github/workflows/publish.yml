@@ -35,8 +35,11 @@ jobs:
     - name: Build contracts
       run: yarn compile
 
+    - name: Set package version
+      run: echo "VERSION=$(bash ./scripts/get_version.sh)" >> $GITHUB_ENV
+
     - name: Publish NPM package
-      run: yarn publish --access public
+      run: yarn publish contracts --access public --new-version $VERSION
     
     - name: Create Release
       id: create_release
@@ -46,5 +49,3 @@ jobs:
       with:
         tag_name: ${{ env.VERSION }}
         release_name: ${{ env.VERSION }}
-        draft: false
-        prerelease: ${{ env.PRERELEASE }}
