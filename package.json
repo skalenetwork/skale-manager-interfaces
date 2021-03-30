@@ -1,5 +1,5 @@
 {
-  "name": "@skalenetwork/skale-manager-interfaces-debug",
+  "name": "@skalenetwork/skale-manager-interfaces",
   "version": "0.0.1",
   "description": "Definitions of interfaces needed to integrate with skale-manager smart contracts",
   "main": "index.js",
@@ -10,9 +10,17 @@
     "/contracts/**/*.sol",
     "/artifacts/contracts/*.json"
   ],
+  "scripts": {
+    "compile": "npx hardhat clean && npx hardhat compile",
+    "hooks": "git config core.hooksPath .githooks || true",
+    "fullcheck": "yarn lint && yarn slither",
+    "lint": "npx solhint \"contracts/**/*.sol\"",
+    "slither": "slither ."
+  },
   "dependencies": {},
   "devDependencies": {
     "hardhat": "^2.1.2",
+    "solhint": "^3.3.4",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   }

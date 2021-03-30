@@ -1,6 +1,6 @@
 {
-  "name": "@skalenetwork/skale-manager-interfaces-debug",
-  "version": "0.0.2",
+  "name": "@skalenetwork/skale-manager-interfaces",
+  "version": "0.0.1",
   "description": "Definitions of interfaces needed to integrate with skale-manager smart contracts",
   "repository": "git@github.com:skalenetwork/skale-manager-interfaces.git",
   "author": "Dmytro Stebaiev <dmytro@skalelabs.com>",
@@ -10,9 +10,5 @@
     "/artifacts/contracts/*.json"
   ],
   "dependencies": {},
-  "devDependencies": {
-    "hardhat": "^2.1.2",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.3"
-  }
+  "devDependencies": {}
 }
