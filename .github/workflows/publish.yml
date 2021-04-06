@@ -40,6 +40,8 @@ jobs:
 
     - name: Publish NPM package
       run: yarn publish contracts --access public --new-version $VERSION
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     
     - name: Create Release
       id: create_release
