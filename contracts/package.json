@@ -1,5 +1,5 @@
 {
-  "name": "@skalenetwork/skale-manager-interfaces-debug",
+  "name": "@skalenetwork/skale-manager-interfaces",
   "version": "0.0.0",
   "description": "Definitions of interfaces needed to integrate with skale-manager smart contracts",
   "repository": "git@github.com:skalenetwork/skale-manager-interfaces.git",
