@@ -19,7 +19,7 @@
     along with SKALE Manager Interfaces.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.7.0;
+pragma solidity >=0.6.10 <0.9.0;
 interface IContractManager {
     function setContractsAddress(string calldata contractsName, address newContractsAddress) external;
     function getContract(string calldata name) external view returns (address);

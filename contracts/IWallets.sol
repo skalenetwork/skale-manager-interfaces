@@ -19,7 +19,7 @@
     along with SKALE Manager Interfaces.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.7.0;
+pragma solidity >=0.6.10 <0.9.0;
 
 interface IWallets {
     function refundGasBySchain(bytes32 schainId, address payable spender, uint spentGas, bool isDebt) external;
