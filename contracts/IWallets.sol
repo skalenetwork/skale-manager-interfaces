@@ -22,7 +22,43 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface IWallets {
+    /**
+     * @dev Emitted when the validator wallet was funded
+     */
+    event ValidatorWalletRecharged(address sponsor, uint amount, uint validatorId);
+
+    /**
+     * @dev Emitted when the schain wallet was funded
+     */
+    event SchainWalletRecharged(address sponsor, uint amount, bytes32 schainHash);
+
+    /**
+     * @dev Emitted when the node received a refund from validator to its wallet
+     */
+    event NodeRefundedByValidator(address node, uint validatorId, uint amount);
+
+    /**
+     * @dev Emitted when the node received a refund from schain to its wallet
+     */
+    event NodeRefundedBySchain(address node, bytes32 schainHash, uint amount);
+
+    /**
+     * @dev Emitted when the validator withdrawn funds from validator wallet
+     */
+    event WithdrawFromValidatorWallet(uint indexed validatorId, uint amount);
+
+    /**
+     * @dev Emitted when the schain owner withdrawn funds from schain wallet
+     */
+    event WithdrawFromSchainWallet(bytes32 indexed schainHash, uint amount);
+
+    function refundGasByValidator(uint validatorId, address payable spender, uint spentGas) external;
+    function refundGasByValidatorToSchain(uint validatorId, bytes32 schainHash) external;
     function refundGasBySchain(bytes32 schainId, address payable spender, uint spentGas, bool isDebt) external;
-    function rechargeSchainWallet(bytes32 schainId) external payable;
+    function withdrawFundsFromSchainWallet(address payable schainOwner, bytes32 schainHash) external;
+    function withdrawFundsFromValidatorWallet(uint amount) external;
     function getSchainBalance(bytes32 schainHash) external view returns (uint);
+    function getValidatorBalance(uint validatorId) external view returns (uint);
+    function rechargeValidatorWallet(uint validatorId) external payable;
+    function rechargeSchainWallet(bytes32 schainId) external payable;
 }

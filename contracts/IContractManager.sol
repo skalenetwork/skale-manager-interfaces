@@ -22,5 +22,18 @@
 pragma solidity >=0.6.10 <0.9.0;
 interface IContractManager {
     function setContractsAddress(string calldata contractsName, address newContractsAddress) external;
+    function getDelegationPeriodManager() external view returns (address);
+    function getBounty() external view returns (address);
+    function getValidatorService() external view returns (address);
+    function getTimeHelpers() external view returns (address);
+    function getConstantsHolder() external view returns (address);
+    function getSkaleToken() external view returns (address);
+    function getTokenState() external view returns (address);
+    function getPunisher() external view returns (address);
     function getContract(string calldata name) external view returns (address);
+
+    /**
+     * @dev Emitted when contract is upgraded.
+     */
+    event ContractUpgraded(string contractsName, address contractsAddress);
 }
