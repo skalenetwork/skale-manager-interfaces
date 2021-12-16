@@ -105,5 +105,5 @@ interface ISchains {
         external
         view
         returns (bool);
-    function getSchainPrice(uint typeOfSchain, uint lifetime) public view returns (uint);
+    function getSchainPrice(uint typeOfSchain, uint lifetime) external view returns (uint);
 }
