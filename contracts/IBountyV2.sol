@@ -22,10 +22,6 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface IBountyV2 {
-    struct BountyHistory {
-        uint month;
-        uint bountyPaid;
-    }
 
     /**
      * @dev Emitted when bounty reduction is turned on or turned off.

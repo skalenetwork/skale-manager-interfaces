@@ -22,14 +22,7 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface ISchains {
-    struct SchainParameters {
-        uint lifetime;
-        uint8 typeOfSchain;
-        uint16 nonce;
-        string name;
-        address originator;
-    }
-
+    
     /**
      * @dev Emitted when an schain is created.
      */

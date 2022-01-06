@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 /*
-    IKeyStorage.sol - SKALE Manager
+    ITokenState.sol - SKALE Manager
     Copyright (C) 2018-Present SKALE Labs
     @author Artem Payvin
 
@@ -21,20 +21,21 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
-import "./ISkaleDKG.sol";
+interface ITokenState {
+    /**
+     * @dev Emitted when a contract is added to the locker.
+     */
+    event LockerWasAdded(
+        string locker
+    );
 
-interface IKeyStorage {
-
-    struct KeyShare {
-        bytes32[2] publicKey;
-        bytes32 share;
-    }
+    /**
+     * @dev Emitted when a contract is removed from the locker.
+     */
+    event LockerWasRemoved(
+        string locker
+    );
     
-    function deleteKey(bytes32 schainHash) external;
-    function initPublicKeyInProgress(bytes32 schainHash) external;
-    function adding(bytes32 schainHash, ISkaleDKG.G2Point memory value) external;
-    function finalizePublicKey(bytes32 schainHash) external;
-    function getCommonPublicKey(bytes32 schainHash) external view returns (ISkaleDKG.G2Point memory);
-    function getPreviousPublicKey(bytes32 schainHash) external view returns (ISkaleDKG.G2Point memory);
-    function getAllPreviousPublicKeys(bytes32 schainHash) external view returns (ISkaleDKG.G2Point[] memory);
+    function removeLocker(string calldata locker) external;
+    function addLocker(string memory locker) external;
 }

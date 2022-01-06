@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 /*
-    IKeyStorage.sol - SKALE Manager
+    ITimeHelpers.sol - SKALE Manager
     Copyright (C) 2018-Present SKALE Labs
     @author Artem Payvin
 
@@ -21,20 +21,13 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
-import "./ISkaleDKG.sol";
-
-interface IKeyStorage {
-
-    struct KeyShare {
-        bytes32[2] publicKey;
-        bytes32 share;
-    }
-    
-    function deleteKey(bytes32 schainHash) external;
-    function initPublicKeyInProgress(bytes32 schainHash) external;
-    function adding(bytes32 schainHash, ISkaleDKG.G2Point memory value) external;
-    function finalizePublicKey(bytes32 schainHash) external;
-    function getCommonPublicKey(bytes32 schainHash) external view returns (ISkaleDKG.G2Point memory);
-    function getPreviousPublicKey(bytes32 schainHash) external view returns (ISkaleDKG.G2Point memory);
-    function getAllPreviousPublicKeys(bytes32 schainHash) external view returns (ISkaleDKG.G2Point[] memory);
+interface ITimeHelpers {
+    function calculateProofOfUseLockEndTime(uint month, uint lockUpPeriodDays) external view returns (uint timestamp);
+    function getCurrentMonth() external view returns (uint);
+    function timestampToYear(uint timestamp) external view returns (uint);
+    function timestampToMonth(uint timestamp) external view returns (uint);
+    function monthToTimestamp(uint month) external view returns (uint timestamp);
+    function addDays(uint fromTimestamp, uint n) external pure returns (uint);
+    function addMonths(uint fromTimestamp, uint n) external pure returns (uint);
+    function addYears(uint fromTimestamp, uint n) external pure returns (uint);
 }

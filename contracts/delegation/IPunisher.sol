@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 /*
-    IKeyStorage.sol - SKALE Manager
+    IPunisher.sol - SKALE Manager
     Copyright (C) 2018-Present SKALE Labs
     @author Artem Payvin
 
@@ -21,20 +21,24 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
-import "./ISkaleDKG.sol";
+interface IPunisher {
+    /**
+     * @dev Emitted upon slashing condition.
+     */
+    event Slash(
+        uint validatorId,
+        uint amount
+    );
 
-interface IKeyStorage {
-
-    struct KeyShare {
-        bytes32[2] publicKey;
-        bytes32 share;
-    }
+    /**
+     * @dev Emitted upon forgive condition.
+     */
+    event Forgive(
+        address wallet,
+        uint amount
+    );
     
-    function deleteKey(bytes32 schainHash) external;
-    function initPublicKeyInProgress(bytes32 schainHash) external;
-    function adding(bytes32 schainHash, ISkaleDKG.G2Point memory value) external;
-    function finalizePublicKey(bytes32 schainHash) external;
-    function getCommonPublicKey(bytes32 schainHash) external view returns (ISkaleDKG.G2Point memory);
-    function getPreviousPublicKey(bytes32 schainHash) external view returns (ISkaleDKG.G2Point memory);
-    function getAllPreviousPublicKeys(bytes32 schainHash) external view returns (ISkaleDKG.G2Point[] memory);
+    function slash(uint validatorId, uint amount) external;
+    function forgive(address holder, uint amount) external;
+    function handleSlash(address holder, uint amount) external;
 }

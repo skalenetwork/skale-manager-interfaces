@@ -23,8 +23,6 @@ pragma solidity >=0.6.10 <0.9.0;
 
 interface ISkaleDKG {
 
-    enum DkgFunction {Broadcast, Alright, ComplaintBadData, PreResponse, Complaint, Response}
-
     struct Fp2Point {
         uint a;
         uint b;
@@ -61,12 +59,6 @@ interface ISkaleDKG {
     struct KeyShare {
         bytes32[2] publicKey;
         bytes32 share;
-    }
-
-    struct Context {
-        bool isDebt;
-        uint delta;
-        DkgFunction dkgFunction;
     }
     
     /**
