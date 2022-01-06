@@ -178,13 +178,6 @@ interface ISkaleDKG {
     function isResponsePossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
     function isNodeBroadcasted(bytes32 schainHash, uint nodeIndex) external view returns (bool);
     function isAllDataReceived(bytes32 schainHash, uint nodeIndex) external view returns (bool);
-    function hashData(
-        KeyShare[] memory secretKeyContribution,
-        G2Point[] memory verificationVector
-    )
-        external
-        pure
-        returns (bytes32);
     function checkAndReturnIndexInGroup(
         bytes32 schainHash,
         uint nodeIndex,
@@ -194,4 +187,11 @@ interface ISkaleDKG {
         view
         returns (uint, bool);
     function isEveryoneBroadcasted(bytes32 schainHash) external view returns (bool);
+    function hashData(
+        KeyShare[] memory secretKeyContribution,
+        G2Point[] memory verificationVector
+    )
+        external
+        pure
+        returns (bytes32);
 }

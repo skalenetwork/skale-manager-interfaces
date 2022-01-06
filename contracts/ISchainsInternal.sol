@@ -79,6 +79,9 @@ interface ISchainsInternal {
     function makeSchainNodesInvisible(bytes32 schainHash) external;
     function makeSchainNodesVisible(bytes32 schainHash) external;
     function newGeneration() external;
+    function addSchainForNode(uint nodeIndex, bytes32 schainHash) external;
+    function removeSchainForNode(uint nodeIndex, uint schainIndex) external;
+    function removeNodeFromExceptions(bytes32 schainHash, uint nodeIndex) external;
     function getSchains() external view returns (bytes32[] memory);
     function getSchainsPartOfNode(bytes32 schainHash) external view returns (uint8);
     function getSchainListSize(address from) external view returns (uint);
@@ -104,8 +107,5 @@ interface ISchainsInternal {
     function checkSchainOnNode(uint nodeIndex, bytes32 schainHash) external view returns (bool);
     function getSchainType(uint typeOfSchain) external view returns(uint8, uint);
     function getGeneration(bytes32 schainHash) external view returns (uint);
-    function addSchainForNode(uint nodeIndex, bytes32 schainHash) external;
-    function removeSchainForNode(uint nodeIndex, uint schainIndex) external;
-    function removeNodeFromExceptions(bytes32 schainHash, uint nodeIndex) external;
     function isSchainExist(bytes32 schainHash) external view returns (bool);
 }

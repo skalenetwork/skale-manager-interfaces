@@ -24,6 +24,6 @@ pragma solidity >=0.6.10 <0.9.0;
 interface IPricing {
     function initNodes() external;
     function adjustPrice() external;
-    function getTotalLoadPercentage() external view returns (uint);
     function checkAllNodes() external;
+    function getTotalLoadPercentage() external view returns (uint);
 }
