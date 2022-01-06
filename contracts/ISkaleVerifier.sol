@@ -21,14 +21,16 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
+import "./ISkaleDKG.sol";
+
 interface ISkaleVerifier {
     function verify(
-        Fp2Operations.Fp2Point calldata signature,
+        ISkaleDKG.Fp2Point calldata signature,
         bytes32 hash,
         uint counter,
         uint hashA,
         uint hashB,
-        G2Operations.G2Point calldata publicKey
+        ISkaleDKG.G2Point calldata publicKey
     )
         external
         view

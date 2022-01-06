@@ -22,6 +22,19 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface ISkaleDKG {
+
+    enum DkgFunction {Broadcast, Alright, ComplaintBadData, PreResponse, Complaint, Response}
+
+    struct Fp2Point {
+        uint a;
+        uint b;
+    }
+
+    struct G2Point {
+        Fp2Point x;
+        Fp2Point y;
+    }
+
     struct Channel {
         bool active;
         uint n;
@@ -42,7 +55,7 @@ interface ISkaleDKG {
         uint startComplaintBlockTimestamp;
         bool isResponse;
         bytes32 keyShare;
-        G2Operations.G2Point sumOfVerVec;
+        G2Point sumOfVerVec;
     }
 
     struct KeyShare {
@@ -72,7 +85,7 @@ interface ISkaleDKG {
     event BroadcastAndKeyShare(
         bytes32 indexed schainHash,
         uint indexed fromNode,
-        G2Operations.G2Point[] verificationVector,
+        G2Point[] verificationVector,
         KeyShare[] secretKeyContribution
     );
 
@@ -115,7 +128,7 @@ interface ISkaleDKG {
     function broadcast(
         bytes32 schainHash,
         uint nodeIndex,
-        G2Operations.G2Point[] memory verificationVector,
+        G2Point[] memory verificationVector,
         KeyShare[] memory secretKeyContribution
     )
         external;
@@ -123,8 +136,8 @@ interface ISkaleDKG {
     function preResponse(
         bytes32 schainId,
         uint fromNodeIndex,
-        G2Operations.G2Point[] memory verificationVector,
-        G2Operations.G2Point[] memory verificationVectorMultiplication,
+        G2Point[] memory verificationVector,
+        G2Point[] memory verificationVectorMultiplication,
         KeyShare[] memory secretKeyContribution
     )
         external;
@@ -133,7 +146,7 @@ interface ISkaleDKG {
         bytes32 schainHash,
         uint fromNodeIndex,
         uint secretNumber,
-        G2Operations.G2Point memory multipliedShare
+        G2Point memory multipliedShare
     )
         external;
     function openChannel(bytes32 schainHash) external;
@@ -167,7 +180,7 @@ interface ISkaleDKG {
     function isAllDataReceived(bytes32 schainHash, uint nodeIndex) external view returns (bool);
     function hashData(
         KeyShare[] memory secretKeyContribution,
-        G2Operations.G2Point[] memory verificationVector
+        G2Point[] memory verificationVector
     )
         external
         pure
@@ -180,5 +193,5 @@ interface ISkaleDKG {
         external
         view
         returns (uint, bool);
-    function isEveryoneBroadcasted(bytes32 schainHash) public view returns (bool);
+    function isEveryoneBroadcasted(bytes32 schainHash) external view returns (bool);
 }
