@@ -68,6 +68,7 @@ jobs:
         tag_name: ${{ env.VERSION }}
         release_name: ${{ env.VERSION }}
         prerelease: ${{ env.PRERELEASE }}
+  
   clean:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
