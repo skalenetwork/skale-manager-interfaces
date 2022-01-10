@@ -135,6 +135,8 @@ interface INodes {
     function makeNodeVisible(uint nodeIndex) external;
     function makeNodeInvisible(uint nodeIndex) external;
     function changeIP(uint nodeIndex, bytes4 newIP, bytes4 newPublicIP) external;
+    function numberOfActiveNodes() external view returns (uint);
+    function incompliant(uint nodeIndex) external view returns (bool);
     function getRandomNodeWithFreeSpace(
         uint8 freeSpace,
         RandomGenerator memory randomGenerator
