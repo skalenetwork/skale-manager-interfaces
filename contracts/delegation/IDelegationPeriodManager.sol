@@ -31,5 +31,6 @@ interface IDelegationPeriodManager {
     );
     
     function setDelegationPeriod(uint monthsCount, uint stakeMultiplier) external;
+    function stakeMultipliers(uint monthsCount) external view returns (uint);
     function isDelegationPeriodAllowed(uint monthsCount) external view returns (bool);
 }
