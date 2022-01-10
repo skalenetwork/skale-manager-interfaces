@@ -22,6 +22,7 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface IConstantsHolder {
+
     /**
      * @dev Emitted when constants updated.
      */
@@ -43,22 +44,6 @@ interface IConstantsHolder {
     function setSchainCreationTimeStamp(uint timestamp) external;
     function setMinimalSchainLifetime(uint lifetime) external;
     function setComplaintTimeLimit(uint timeLimit) external;
-    function NODE_DEPOSIT() external view returns (uint);
-    function TOTAL_SPACE_ON_NODE() external view returns (uint8);
-    function SMALL_DIVISOR() external view returns (uint8);
-    function SECONDS_TO_YEAR() external view returns (uint32);
-    function OPTIMAL_LOAD_PERCENTAGE() external view returns (uint);
-    function ADJUSTMENT_SPEED() external view returns (uint);
-    function COOLDOWN_TIME() external view returns (uint);
-    function MIN_PRICE() external view returns (uint);
-    function MSR_REDUCING_COEFFICIENT() external view returns (uint);
-    function BOUNTY_LOCKUP_MONTHS() external view returns (uint);
-    function ALRIGHT_DELTA() external view returns (uint);
-    function BROADCAST_DELTA() external view returns (uint);
-    function COMPLAINT_BAD_DATA_DELTA() external view returns (uint);
-    function PRE_RESPONSE_DELTA() external view returns (uint);
-    function COMPLAINT_DELTA() external view returns (uint);
-    function RESPONSE_DELTA() external view returns (uint);
     function msr() external view returns (uint);
     function launchTimestamp() external view returns (uint);
     function rotationDelay() external view returns (uint);
