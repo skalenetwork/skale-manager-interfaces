@@ -27,6 +27,7 @@ interface IContractManager {
      */
     event ContractUpgraded(string contractsName, address contractsAddress);
 
+    function initialize() external;
     function setContractsAddress(string calldata contractsName, address newContractsAddress) external;
     function contracts(bytes32 nameHash) external view returns (address);
     function getDelegationPeriodManager() external view returns (address);
