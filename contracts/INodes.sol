@@ -21,6 +21,8 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
+import "./utils/IRandom.sol";
+
 interface INodes {
     // All Nodes states
     enum NodeStatus {Active, Leaving, Left, In_Maintenance}
@@ -57,10 +59,6 @@ interface INodes {
         bytes32[2] publicKey;
         uint16 nonce;
         string domainName;
-    }
-
-    struct RandomGenerator {
-        uint seed;
     }
     
     /**
@@ -139,7 +137,7 @@ interface INodes {
     function incompliant(uint nodeIndex) external view returns (bool);
     function getRandomNodeWithFreeSpace(
         uint8 freeSpace,
-        RandomGenerator memory randomGenerator
+        IRandom.RandomGenerator memory randomGenerator
     )
         external
         view
