@@ -22,6 +22,11 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface ISchains {
+
+    struct SchainOption {
+        string name;
+        bytes value;
+    }
     
     /**
      * @dev Emitted when an schain is created.
@@ -79,7 +84,8 @@ interface ISchains {
         uint16 nonce,
         string calldata name,
         address schainOwner,
-        address schainOriginator
+        address schainOriginator,
+        SchainOption[] calldata options
     )
         external
         payable;
