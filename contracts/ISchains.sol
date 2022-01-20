@@ -105,4 +105,6 @@ interface ISchains {
         view
         returns (bool);
     function getSchainPrice(uint typeOfSchain, uint lifetime) external view returns (uint);
+    function getOption(bytes32 schainHash, string calldata optionName) external view returns (bytes memory);
+    function getOptions(bytes32 schainHash) external view returns (SchainOption[] memory);
 }
