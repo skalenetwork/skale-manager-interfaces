@@ -120,7 +120,7 @@ interface INodes {
     function changeNodeLastRewardDate(uint nodeIndex) external;
     function changeNodeFinishTime(uint nodeIndex, uint time) external;
     function createNode(address from, NodeCreationParams calldata params) external;
-    function initExit(uint nodeIndex) external returns (bool);
+    function initExit(uint nodeIndex) external;
     function completeExit(uint nodeIndex) external returns (bool);
     function deleteNodeForValidator(uint validatorId, uint nodeIndex) external;
     function checkPossibilityCreatingNode(address nodeAddress) external;
