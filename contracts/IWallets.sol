@@ -53,7 +53,7 @@ interface IWallets {
     event WithdrawFromSchainWallet(bytes32 indexed schainHash, uint amount);
 
     receive() external payable;
-    function refundGasByValidator(uint validatorId, address payable spender, uint spentGas) external;
+    function refundGasByValidator(uint validatorId, address payable spender, uint gasLimit) external;
     function refundGasByValidatorToSchain(uint validatorId, bytes32 schainHash) external;
     function refundGasBySchain(bytes32 schainId, address payable spender, uint spentGas, bool isDebt) external;
     function withdrawFundsFromSchainWallet(address payable schainOwner, bytes32 schainHash) external;
