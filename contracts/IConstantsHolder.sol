@@ -45,6 +45,7 @@ interface IConstantsHolder {
     function setMinimalSchainLifetime(uint lifetime) external;
     function setComplaintTimeLimit(uint timeLimit) external;
     function setMaxNodeDeposit(uint newMaxNodeDeposit) external;
+    function reinitialize() external;
     function msr() external view returns (uint);
     function launchTimestamp() external view returns (uint);
     function rotationDelay() external view returns (uint);
