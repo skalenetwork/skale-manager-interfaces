@@ -21,6 +21,8 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
+import "./INodes.sol";
+
 interface ISchainsInternal {
     struct Schain {
         string name;
@@ -79,7 +81,7 @@ interface ISchainsInternal {
     function makeSchainNodesInvisible(bytes32 schainHash) external;
     function makeSchainNodesVisible(bytes32 schainHash) external;
     function newGeneration() external;
-    function addSchainForNode(uint nodeIndex, bytes32 schainHash) external;
+    function addSchainForNode(INodes nodes,uint nodeIndex, bytes32 schainHash) external;
     function removeSchainForNode(uint nodeIndex, uint schainIndex) external;
     function removeNodeFromExceptions(bytes32 schainHash, uint nodeIndex) external;
     function isSchainActive(bytes32 schainHash) external view returns (bool);
