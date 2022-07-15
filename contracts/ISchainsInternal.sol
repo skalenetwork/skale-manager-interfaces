@@ -92,6 +92,7 @@ interface ISchainsInternal {
     function getSchainListSize(address from) external view returns (uint);
     function getSchainHashesByAddress(address from) external view returns (bytes32[] memory);
     function getSchainIdsByAddress(address from) external view returns (bytes32[] memory);
+    function getSchainHashesForNode(uint nodeIndex) external view returns (bytes32[] memory);
     function getSchainOwner(bytes32 schainHash) external view returns (address);
     function getSchainOriginator(bytes32 schainHash) external view returns (address);
     function isSchainNameAvailable(string calldata name) external view returns (bool);
