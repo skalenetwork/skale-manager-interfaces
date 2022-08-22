@@ -22,6 +22,76 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface ISchains {
+
+    struct SchainOption {
+        string name;
+        bytes value;
+    }
+    
+    /**
+     * @dev Emitted when an schain is created.
+     */
+    event SchainCreated(
+        string name,
+        address owner,
+        uint partOfNode,
+        uint lifetime,
+        uint numberOfNodes,
+        uint deposit,
+        uint16 nonce,
+        bytes32 schainHash
+    );
+
+    /**
+     * @dev Emitted when an schain is deleted.
+     */
+    event SchainDeleted(
+        address owner,
+        string name,
+        bytes32 indexed schainHash
+    );
+
+    /**
+     * @dev Emitted when a node in an schain is rotated.
+     */
+    event NodeRotated(
+        bytes32 schainHash,
+        uint oldNode,
+        uint newNode
+    );
+
+    /**
+     * @dev Emitted when a node is added to an schain.
+     */
+    event NodeAdded(
+        bytes32 schainHash,
+        uint newNode
+    );
+
+    /**
+     * @dev Emitted when a group of nodes is created for an schain.
+     */
+    event SchainNodes(
+        string name,
+        bytes32 schainHash,
+        uint[] nodesInGroup
+    );
+
+    function addSchain(address from, uint deposit, bytes calldata data) external;
+    function addSchainByFoundation(
+        uint lifetime,
+        uint8 typeOfSchain,
+        uint16 nonce,
+        string calldata name,
+        address schainOwner,
+        address schainOriginator,
+        SchainOption[] calldata options
+    )
+        external
+        payable;
+    function deleteSchain(address from, string calldata name) external;
+    function deleteSchainByRoot(string calldata name) external;
+    function restartSchainCreation(string calldata name) external;
     function verifySchainSignature(
         uint256 signA,
         uint256 signB,
@@ -34,4 +104,7 @@ interface ISchains {
         external
         view
         returns (bool);
+    function getSchainPrice(uint typeOfSchain, uint lifetime) external view returns (uint);
+    function getOption(bytes32 schainHash, string calldata optionName) external view returns (bytes memory);
+    function getOptions(bytes32 schainHash) external view returns (SchainOption[] memory);
 }

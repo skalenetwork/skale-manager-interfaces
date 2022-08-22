@@ -1,14 +1,22 @@
 name: Build and publish
 on:
+  push:
+    branches-ignore:
+      - stable
+      - beta
+      - develop
   pull_request:
     types: [closed]
     branches:
       - stable
+      - beta
+      - develop
+env:
+  NODE_VERSION: 16
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged
     steps:
     - uses: actions/checkout@v2
 
@@ -27,7 +35,7 @@ jobs:
     - name: Set up Node
       uses: actions/setup-node@v2
       with:
-        node-version: '12'
+        node-version: ${{ env.NODE_VERSION }}
         registry-url: 'https://registry.npmjs.org'
 
     - name: Install project
@@ -36,12 +44,21 @@ jobs:
     - name: Build contracts
       run: yarn compile
 
-    - name: Set package version
-      run: echo "VERSION=$(bash ./scripts/get_version.sh)" >> $GITHUB_ENV
+    - name: Determine version
+      run: |
+        export BRANCH=${GITHUB_REF##*/}
+        echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+        echo "Branch $BRANCH"
+        export VERSION=$(bash ./scripts/calculate_version.sh)
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "Version $VERSION"
+        ( test $BRANCH = "stable" && export PRERELEASE=false ) || export PRERELEASE=true
+        echo "PRERELEASE=$PRERELEASE" >> $GITHUB_ENV
 
     - name: Publish NPM package
-      run: yarn publish contracts --access public --new-version $VERSION --verbose --no-git-tag-version
+      run: ./scripts/publish_package.sh
       env:
+        BRANCH: ${{ env.BRANCH }}
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     
     - name: Create Release
@@ -52,3 +69,24 @@ jobs:
       with:
         tag_name: ${{ env.VERSION }}
         release_name: ${{ env.VERSION }}
+        prerelease: ${{ env.PRERELEASE }}
+  
+  clean:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Remove feature tag
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: |
+        export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
+        echo "Source branch: $SOURCE_BRANCH"
+        npm dist-tag rm @skalenetwork/skale-manager-interfaces $SOURCE_BRANCH
