@@ -52,6 +52,11 @@ interface IWallets {
      */
     event WithdrawFromSchainWallet(bytes32 indexed schainHash, uint amount);
 
+    /**
+     * @dev Emitted when validators returns a debt to schainWallet
+     */
+    event ReturnDebtFromValidator(uint validatorId, bytes32 schainHash, uint debtAmount);
+
     receive() external payable;
     function refundGasByValidator(uint validatorId, address payable spender, uint gasLimit) external;
     function refundGasByValidatorToSchain(uint validatorId, bytes32 schainHash) external;
