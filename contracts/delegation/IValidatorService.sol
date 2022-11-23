@@ -146,4 +146,5 @@ interface IValidatorService {
     function getValidatorId(address validatorAddress) external view returns (uint);
     function isAcceptingNewRequests(uint validatorId) external view returns (bool);
     function isAuthorizedValidator(uint validatorId) external view returns (bool);
+    function getValidatorIdByNodeAddressWithoutRevert(address nodeAddress) external view returns (uint validatorId);
 }
