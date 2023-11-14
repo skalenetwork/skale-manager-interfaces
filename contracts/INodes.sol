@@ -38,7 +38,7 @@ interface INodes {
         uint finishTime;
         NodeStatus status;
         uint validatorId;
-        uint lastChangeIpTime;
+        uint lastChangeIpTime; 
     }
 
     // struct to note which Nodes and which number of Nodes owned by user
