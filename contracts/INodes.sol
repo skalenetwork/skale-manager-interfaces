@@ -38,7 +38,6 @@ interface INodes {
         uint finishTime;
         NodeStatus status;
         uint validatorId;
-        uint lastChangeIpTime; 
     }
 
     // struct to note which Nodes and which number of Nodes owned by user
@@ -164,4 +163,5 @@ interface INodes {
     function isNodeExist(address from, uint nodeIndex) external view returns (bool);
     function isNodeActive(uint nodeIndex) external view returns (bool);
     function isNodeLeaving(uint nodeIndex) external view returns (bool);
+    function getLastChangeIpTime(uint nodeIndex) external view returns (uint);
 }
