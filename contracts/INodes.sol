@@ -60,7 +60,12 @@ interface INodes {
         uint16 nonce;
         string domainName;
     }
-    
+
+    // struct for storing additional fields for Node
+    struct NodeExtras {
+       uint lastChangeIpTime;
+    }
+
     /**
      * @dev Emitted when a node is created.
      */
