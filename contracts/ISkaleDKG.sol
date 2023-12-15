@@ -121,7 +121,8 @@ interface ISkaleDKG {
         bytes32 schainHash,
         uint nodeIndex,
         G2Point[] memory verificationVector,
-        KeyShare[] memory secretKeyContribution
+        KeyShare[] memory secretKeyContribution,
+        uint rotationCounter
     )
         external;
     function complaintBadData(bytes32 schainHash, uint fromNodeIndex, uint toNodeIndex) external;
