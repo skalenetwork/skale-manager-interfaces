@@ -60,7 +60,7 @@ interface ISkaleDKG {
         bytes32[2] publicKey;
         bytes32 share;
     }
-    
+
     /**
      * @dev Emitted when a channel is opened.
      */
@@ -115,7 +115,7 @@ interface ISkaleDKG {
      * @dev Emitted when a complaint is sent.
      */
     event ComplaintSent(bytes32 indexed schainHash, uint indexed fromNodeIndex, uint indexed toNodeIndex);
-    
+
     function alright(bytes32 schainHash, uint fromNodeIndex) external;
     function broadcast(
         bytes32 schainHash,
@@ -147,6 +147,7 @@ interface ISkaleDKG {
     function setStartAlrightTimestamp(bytes32 schainHash) external;
     function setBadNode(bytes32 schainHash, uint nodeIndex) external;
     function finalizeSlashing(bytes32 schainHash, uint badNode) external;
+    function resetPendingToBeReplaced(bytes32 schainHash) external;
     function getChannelStartedTime(bytes32 schainHash) external view returns (uint);
     function getChannelStartedBlock(bytes32 schainHash) external view returns (uint);
     function getNumberOfBroadcasted(bytes32 schainHash) external view returns (uint);
