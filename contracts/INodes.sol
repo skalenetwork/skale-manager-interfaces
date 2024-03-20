@@ -60,7 +60,12 @@ interface INodes {
         uint16 nonce;
         string domainName;
     }
-    
+
+    // struct for storing additional fields for Node
+    struct NodeExtras {
+       uint lastChangeIpTime;
+    }
+
     /**
      * @dev Emitted when a node is created.
      */
@@ -163,4 +168,5 @@ interface INodes {
     function isNodeExist(address from, uint nodeIndex) external view returns (bool);
     function isNodeActive(uint nodeIndex) external view returns (bool);
     function isNodeLeaving(uint nodeIndex) external view returns (bool);
+    function getLastChangeIpTime(uint nodeIndex) external view returns (uint);
 }
