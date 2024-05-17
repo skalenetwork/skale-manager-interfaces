@@ -66,6 +66,7 @@ interface ISchainsInternal {
     )
         external
         returns (uint[] memory);
+    function changeLifetime(bytes32 schainHash, uint lifetime, uint deposit) external;
     function removeSchain(bytes32 schainHash, address from) external;
     function removeNodeFromSchain(uint nodeIndex, bytes32 schainHash) external;
     function deleteGroup(bytes32 schainHash) external;
