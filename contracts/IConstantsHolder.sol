@@ -46,6 +46,9 @@ interface IConstantsHolder {
     function setComplaintTimeLimit(uint timeLimit) external;
     function setMinNodeBalance(uint newMinNodeBalance) external;
     function reinitialize() external;
+    // Corresponds to the public field
+    // solhint-disable-next-line func-name-mixedcase
+    function NODE_DEPOSIT() external view returns (uint256);
     function msr() external view returns (uint);
     function launchTimestamp() external view returns (uint);
     function rotationDelay() external view returns (uint);
