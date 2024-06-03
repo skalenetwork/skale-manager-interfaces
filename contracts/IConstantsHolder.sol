@@ -49,6 +49,9 @@ interface IConstantsHolder {
     // Corresponds to the public field
     // solhint-disable-next-line func-name-mixedcase
     function NODE_DEPOSIT() external view returns (uint256);
+    // Corresponds to the public field
+    // solhint-disable-next-line func-name-mixedcase
+    function SMALL_DIVISOR() external view returns (uint8);
     function msr() external view returns (uint);
     function launchTimestamp() external view returns (uint);
     function rotationDelay() external view returns (uint);
