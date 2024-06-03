@@ -47,11 +47,11 @@ interface IConstantsHolder {
     function setMinNodeBalance(uint newMinNodeBalance) external;
     function reinitialize() external;
     // Corresponds to the public field
-    // solhint-disable-next-line func-name-mixedcase
+    // solhint-disable func-name-mixedcase
     function NODE_DEPOSIT() external view returns (uint256);
-    // Corresponds to the public field
-    // solhint-disable-next-line func-name-mixedcase
+    function SECONDS_TO_YEAR() external view returns (uint32);
     function SMALL_DIVISOR() external view returns (uint8);
+    // solhint-enable func-name-mixedcase
     function msr() external view returns (uint);
     function launchTimestamp() external view returns (uint);
     function rotationDelay() external view returns (uint);
