@@ -22,7 +22,6 @@
 pragma solidity >=0.6.10 <0.9.0;
 
 interface IPaymasterController {
-    function initialize(address contractManagerAddress) external;
     function addSchain(string calldata name) external;
     function setImaAddress(address imaAddress) external;
     function setMarionetteAddress(address payable marionetteAddress) external;
