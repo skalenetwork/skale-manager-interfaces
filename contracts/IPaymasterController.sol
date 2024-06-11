@@ -23,6 +23,7 @@ pragma solidity >=0.6.10 <0.9.0;
 
 interface IPaymasterController {
     function addSchain(string calldata name) external;
+    function addValidator(uint256 validatorId, address validatorAddress) external;
     function removeSchain(bytes32 schainHash) external;
     function setImaAddress(address imaAddress) external;
     function setMarionetteAddress(address payable marionetteAddress) external;
