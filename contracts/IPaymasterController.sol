@@ -27,6 +27,7 @@ interface IPaymasterController {
     function removeSchain(bytes32 schainHash) external;
     function setImaAddress(address imaAddress) external;
     function setMarionetteAddress(address payable marionetteAddress) external;
+    function setNodesAmount(uint256 validatorId, uint256 nodesAmount) external;
     function setPaymasterAddress(address paymasterAddress) external;
     function setPaymasterChainHash(bytes32 chainHash) external;
     function setValidatorAddress(uint256 validatorId, address validatorAddress) external;
