@@ -60,7 +60,7 @@ interface ISkaleDKG {
         bytes32[2] publicKey;
         bytes32 share;
     }
-    
+
     /**
      * @dev Emitted when a channel is opened.
      */
@@ -115,7 +115,9 @@ interface ISkaleDKG {
      * @dev Emitted when a complaint is sent.
      */
     event ComplaintSent(bytes32 indexed schainHash, uint indexed fromNodeIndex, uint indexed toNodeIndex);
-    
+
+    // External
+
     function alright(bytes32 schainHash, uint fromNodeIndex) external;
     function broadcast(
         bytes32 schainHash,
@@ -125,7 +127,11 @@ interface ISkaleDKG {
         uint rotationCounter
     )
         external;
+    function complaint(bytes32 schainHash, uint fromNodeIndex, uint toNodeIndex) external;
     function complaintBadData(bytes32 schainHash, uint fromNodeIndex, uint toNodeIndex) external;
+    function deleteChannel(bytes32 schainHash) external;
+    function finalizeSlashing(bytes32 schainHash, uint badNode) external;
+    function openChannel(bytes32 schainHash) external;
     function preResponse(
         bytes32 schainId,
         uint fromNodeIndex,
@@ -134,7 +140,7 @@ interface ISkaleDKG {
         KeyShare[] memory secretKeyContribution
     )
         external;
-    function complaint(bytes32 schainHash, uint fromNodeIndex, uint toNodeIndex) external;
+    function resetPendingToBeReplaced(bytes32 schainHash) external;
     function response(
         bytes32 schainHash,
         uint fromNodeIndex,
@@ -142,35 +148,11 @@ interface ISkaleDKG {
         G2Point memory multipliedShare
     )
         external;
-    function openChannel(bytes32 schainHash) external;
-    function deleteChannel(bytes32 schainHash) external;
-    function setStartAlrightTimestamp(bytes32 schainHash) external;
     function setBadNode(bytes32 schainHash, uint nodeIndex) external;
-    function finalizeSlashing(bytes32 schainHash, uint badNode) external;
-    function getChannelStartedTime(bytes32 schainHash) external view returns (uint);
-    function getChannelStartedBlock(bytes32 schainHash) external view returns (uint);
-    function getNumberOfBroadcasted(bytes32 schainHash) external view returns (uint);
-    function getNumberOfCompleted(bytes32 schainHash) external view returns (uint);
-    function getTimeOfLastSuccessfulDKG(bytes32 schainHash) external view returns (uint);
-    function getComplaintData(bytes32 schainHash) external view returns (uint, uint);
-    function getComplaintStartedTime(bytes32 schainHash) external view returns (uint);
-    function getAlrightStartedTime(bytes32 schainHash) external view returns (uint);
-    function isChannelOpened(bytes32 schainHash) external view returns (bool);
-    function isLastDKGSuccessful(bytes32 groupIndex) external view returns (bool);
-    function isBroadcastPossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
-    function isComplaintPossible(
-        bytes32 schainHash,
-        uint fromNodeIndex,
-        uint toNodeIndex
-    )
-        external
-        view
-        returns (bool);
-    function isAlrightPossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
-    function isPreResponsePossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
-    function isResponsePossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
-    function isNodeBroadcasted(bytes32 schainHash, uint nodeIndex) external view returns (bool);
-    function isAllDataReceived(bytes32 schainHash, uint nodeIndex) external view returns (bool);
+    function setStartAlrightTimestamp(bytes32 schainHash) external;
+
+    // External view
+
     function checkAndReturnIndexInGroup(
         bytes32 schainHash,
         uint nodeIndex,
@@ -179,7 +161,35 @@ interface ISkaleDKG {
         external
         view
         returns (uint, bool);
+    function getAlrightStartedTime(bytes32 schainHash) external view returns (uint);
+    function getChannelStartedBlock(bytes32 schainHash) external view returns (uint);
+    function getChannelStartedTime(bytes32 schainHash) external view returns (uint);
+    function getComplaintData(bytes32 schainHash) external view returns (uint, uint);
+    function getComplaintStartedTime(bytes32 schainHash) external view returns (uint);
+    function getNumberOfBroadcasted(bytes32 schainHash) external view returns (uint);
+    function getNumberOfCompleted(bytes32 schainHash) external view returns (uint);
+    function getTimeOfLastSuccessfulDKG(bytes32 schainHash) external view returns (uint);
+    function isAllDataReceived(bytes32 schainHash, uint nodeIndex) external view returns (bool);
+    function isAlrightPossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
+    function isBroadcastPossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
+    function isChannelOpened(bytes32 schainHash) external view returns (bool);
+    function isComplaintPossible(
+        bytes32 schainHash,
+        uint fromNodeIndex,
+        uint toNodeIndex
+    )
+        external
+        view
+        returns (bool);
     function isEveryoneBroadcasted(bytes32 schainHash) external view returns (bool);
+    function isLastDKGSuccessful(bytes32 groupIndex) external view returns (bool);
+    function isNodeBroadcasted(bytes32 schainHash, uint nodeIndex) external view returns (bool);
+    function isPreResponsePossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
+    function isResponsePossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);
+    function pendingToBeReplaced(bytes32 schainHash) external view returns (uint256);
+
+    // External pure
+
     function hashData(
         KeyShare[] memory secretKeyContribution,
         G2Point[] memory verificationVector

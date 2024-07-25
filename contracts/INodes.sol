@@ -119,7 +119,7 @@ interface INodes {
         bytes4 previousIP,
         bytes4 newIP
     );
-    
+
     function removeSpaceFromNode(uint nodeIndex, uint8 space) external returns (bool);
     function addSpaceToNode(uint nodeIndex, uint8 space) external;
     function changeNodeLastRewardDate(uint nodeIndex) external;
@@ -168,5 +168,7 @@ interface INodes {
     function isNodeExist(address from, uint nodeIndex) external view returns (bool);
     function isNodeActive(uint nodeIndex) external view returns (bool);
     function isNodeLeaving(uint nodeIndex) external view returns (bool);
+    function isNodeVisible(uint256 nodeIndex) external view returns (bool);
     function getLastChangeIpTime(uint nodeIndex) external view returns (uint);
+    function getFreeSpace(uint256 nodeIndex) external view returns (uint8 freeSpace);
 }
