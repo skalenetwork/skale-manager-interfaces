@@ -49,6 +49,7 @@ interface IConstantsHolder {
     // Corresponds to the public field
     // solhint-disable func-name-mixedcase
     // slither-disable-start naming-convention
+    function BOUNTY_LOCKUP_MONTHS() external view returns (uint256);
     function NODE_DEPOSIT() external view returns (uint256);
     function SECONDS_TO_YEAR() external view returns (uint32);
     function SMALL_DIVISOR() external view returns (uint8);
