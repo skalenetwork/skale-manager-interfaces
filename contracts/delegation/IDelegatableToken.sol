@@ -19,23 +19,23 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 /**
  * @dev Interface of the SkaleToken contract.
  */
 interface IDelegatableToken {
-    
+
     /**
      * @dev Returns and updates the amount of locked tokens of a given account `wallet`.
      */
     function getAndUpdateLockedAmount(address wallet) external returns (uint);
-    
+
     /**
      * @dev Returns and updates the amount of delegated tokens of a given account `wallet`.
      */
     function getAndUpdateDelegatedAmount(address wallet) external returns (uint);
-    
+
     /**
      * @dev Returns and updates the amount of slashed tokens of a given account `wallet`.
      */

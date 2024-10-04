@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface IDistributor {
     /**
@@ -48,7 +48,7 @@ interface IDistributor {
         uint validatorId,
         uint amount
     );
-    
+
     function getAndUpdateEarnedBountyAmount(uint validatorId) external returns (uint earned, uint endMonth);
     function withdrawBounty(uint validatorId, address to) external;
     function withdrawFee(address to) external;

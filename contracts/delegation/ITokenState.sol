@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface ITokenState {
     /**
@@ -35,7 +35,7 @@ interface ITokenState {
     event LockerWasRemoved(
         string locker
     );
-    
+
     function removeLocker(string calldata locker) external;
     function addLocker(string memory locker) external;
 }

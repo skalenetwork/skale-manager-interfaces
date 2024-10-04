@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface IAccessControlUpgradeableLegacy {
     /**
@@ -38,7 +38,7 @@ interface IAccessControlUpgradeableLegacy {
      *   - if using `renounceRole`, it is the role bearer (i.e. `account`)
      */
     event RoleRevoked(bytes32 indexed role, address indexed account, address indexed sender);
-    
+
     function grantRole(bytes32 role, address account) external;
     function revokeRole(bytes32 role, address account) external;
     function renounceRole(bytes32 role, address account) external;

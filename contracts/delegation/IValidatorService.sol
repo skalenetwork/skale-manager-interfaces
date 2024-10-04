@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface IValidatorService {
     struct Validator {
@@ -32,7 +32,7 @@ interface IValidatorService {
         uint minimumDelegationAmount;
         bool acceptNewRequests;
     }
-    
+
     /**
      * @dev Emitted when a validator registers.
      */
@@ -107,7 +107,7 @@ interface IValidatorService {
      * @dev Emitted when validator start or stop accepting new delegation requests.
      */
     event AcceptingNewRequests(uint indexed validatorId, bool status);
-    
+
     function registerValidator(
         string calldata name,
         string calldata description,

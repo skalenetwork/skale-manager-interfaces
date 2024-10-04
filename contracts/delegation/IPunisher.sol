@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface IPunisher {
     /**
@@ -37,7 +37,7 @@ interface IPunisher {
         address wallet,
         uint amount
     );
-    
+
     function slash(uint validatorId, uint amount) external;
     function forgive(address holder, uint amount) external;
     function handleSlash(address holder, uint amount) external;

@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 import "./ISkaleDKG.sol";
 
@@ -29,7 +29,7 @@ interface IKeyStorage {
         bytes32[2] publicKey;
         bytes32 share;
     }
-    
+
     function deleteKey(bytes32 schainHash) external;
     function initPublicKeyInProgress(bytes32 schainHash) external;
     function adding(bytes32 schainHash, ISkaleDKG.G2Point memory value) external;

@@ -19,14 +19,14 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface ISlashingTable {
     /**
      * @dev Emitted when penalty was added
      */
     event PenaltyAdded(uint indexed offenseHash, string offense, uint penalty);
-    
+
     function setPenalty(string calldata offense, uint penalty) external;
     function getPenalty(string calldata offense) external view returns (uint);
 }

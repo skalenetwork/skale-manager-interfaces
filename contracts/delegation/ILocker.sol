@@ -19,14 +19,14 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 /**
  * @dev Interface of the Locker functions.
  */
 interface ILocker {
     /**
-     * @dev Returns and updates the total amount of locked tokens of a given 
+     * @dev Returns and updates the total amount of locked tokens of a given
      * `holder`.
      */
     function getAndUpdateLockedAmount(address wallet) external returns (uint);

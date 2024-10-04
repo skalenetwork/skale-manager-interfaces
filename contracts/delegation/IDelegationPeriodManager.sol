@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface IDelegationPeriodManager {
     /**
@@ -29,7 +29,7 @@ interface IDelegationPeriodManager {
         uint length,
         uint stakeMultiplier
     );
-    
+
     function setDelegationPeriod(uint monthsCount, uint stakeMultiplier) external;
     function stakeMultipliers(uint monthsCount) external view returns (uint);
     function isDelegationPeriodAllowed(uint monthsCount) external view returns (bool);

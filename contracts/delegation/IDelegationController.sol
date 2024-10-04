@@ -19,7 +19,7 @@
     along with SKALE Manager.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-pragma solidity >=0.6.10 <0.9.0;
+pragma solidity >=0.8.8 <0.9.0;
 
 interface IDelegationController {
     enum State {
@@ -86,7 +86,7 @@ interface IDelegationController {
     event UndelegationRequested(
         uint delegationId
     );
-    
+
     function getAndUpdateDelegatedToValidatorNow(uint validatorId) external returns (uint);
     function getAndUpdateDelegatedAmount(address holder) external returns (uint);
     function getAndUpdateEffectiveDelegatedByHolderToValidator(address holder, uint validatorId, uint month)
