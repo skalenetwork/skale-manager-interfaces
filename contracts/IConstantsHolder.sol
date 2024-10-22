@@ -46,6 +46,16 @@ interface IConstantsHolder {
     function setComplaintTimeLimit(uint timeLimit) external;
     function setMinNodeBalance(uint newMinNodeBalance) external;
     function reinitialize() external;
+    // Corresponds to the public field
+    // solhint-disable func-name-mixedcase
+    // slither-disable-start naming-convention
+    function BOUNTY_LOCKUP_MONTHS() external view returns (uint256);
+    function NODE_DEPOSIT() external view returns (uint256);
+    function SECONDS_TO_YEAR() external view returns (uint32);
+    function SMALL_DIVISOR() external view returns (uint8);
+    function TOTAL_SPACE_ON_NODE() external view returns (uint8);
+    // solhint-enable func-name-mixedcase
+    // slither-disable-end naming-convention
     function msr() external view returns (uint);
     function launchTimestamp() external view returns (uint);
     function rotationDelay() external view returns (uint);
