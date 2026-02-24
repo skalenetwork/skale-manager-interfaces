@@ -24,7 +24,6 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: ${{ env.NODE_VERSION }}
-        registry-url: 'https://registry.npmjs.org'
         cache: 'yarn'
 
     - name: Install project
@@ -51,26 +50,23 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ncipollo/release-action@v1
       with:
-        tag_name: ${{ env.VERSION }}
-        release_name: ${{ env.VERSION }}
+        tag: ${{ env.VERSION }}
+        commit: ${{ github.sha }}
         prerelease: ${{ env.PRERELEASE }}
 
   clean:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Node
       uses: actions/setup-node@v6
       with:
         node-version: ${{ env.NODE_VERSION }}
-        registry-url: 'https://registry.npmjs.org'
+        cache: 'yarn'
 
     - name: Remove feature tag
       env:
@@ -78,4 +74,4 @@ jobs:
       run: |
         export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
         echo "Source branch: $SOURCE_BRANCH"
-        npm dist-tag rm @skalenetwork/skale-manager-interfaces $SOURCE_BRANCH
+        npm --//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN dist-tag rm @skalenetwork/skale-manager-interfaces $SOURCE_BRANCH
