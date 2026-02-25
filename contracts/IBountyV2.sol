@@ -44,4 +44,5 @@ interface IBountyV2 {
     function estimateBounty(uint nodeIndex) external view returns (uint);
     function getNextRewardTimestamp(uint nodeIndex) external view returns (uint);
     function getEffectiveDelegatedSum() external view returns (uint[] memory);
+    function getRequiredNodesNumber(uint256 delegatedValue) external view returns (uint256 requiredNodesNumber);
 }
