@@ -240,6 +240,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@skalenetwork/skale-manager-interfaces@workspace:."
   dependencies:
+    "@types/node": "npm:^25.3.0"
     hardhat: "npm:^2.3.0"
     solhint: "npm:^3.3.6"
     ts-node: "npm:^10.0.0"
@@ -337,6 +338,15 @@ __metadata:
   version: 15.6.1
   resolution: "@types/node@npm:15.6.1"
   checksum: 10c0/e3de56c8490d607f9adcdfd30dc52c8f97109fd80828b0dfbaa94a731ba67e790ce2b7f228098ac9e0bd735039c2eec1f412fa8d7ff90ae8a55c708223885eec
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^25.3.0":
+  version: 25.3.0
+  resolution: "@types/node@npm:25.3.0"
+  dependencies:
+    undici-types: "npm:~7.18.0"
+  checksum: 10c0/7b2b18c9d68047157367fc2f786d4f166d22dc0ad9f82331ca02fb16f2f391854123dbe604dcb938cda119c87051e4bb71dcb9ece44a579f483a6f96d4bd41de
   languageName: node
   linkType: hard
 
@@ -4083,6 +4093,13 @@ __metadata:
     has-symbols: "npm:^1.0.2"
     which-boxed-primitive: "npm:^1.0.2"
   checksum: 10c0/6f0b91b0744c6f9fd05afa70484914b70686596be628543a143fab018733f902ff39fad2c3cf8f00fd5d32ba8bce8edf9cf61cee940c1af892316e112b25812b
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:~7.18.0":
+  version: 7.18.2
+  resolution: "undici-types@npm:7.18.2"
+  checksum: 10c0/85a79189113a238959d7a647368e4f7c5559c3a404ebdb8fc4488145ce9426fcd82252a844a302798dfc0e37e6fb178ff481ed03bc4caf634c5757d9ef43521d
   languageName: node
   linkType: hard
 
