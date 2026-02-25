@@ -16,7 +16,6 @@
     "lint": "yarn solhint \"contracts/**/*.sol\"",
     "slither": "slither ."
   },
-  "dependencies": {},
   "devDependencies": {
     "hardhat": "^2.3.0",
     "solhint": "^3.3.6",
