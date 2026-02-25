@@ -32,4 +32,15 @@ cp LICENSE contracts
 cp README.md contracts
 cp package.json contracts
 
-yarn publish contracts --access public --new-version $VERSION --verbose --no-git-tag-version $TAG --ignore-scripts
+cd contracts
+
+# set version
+package="$(jq --arg v "$VERSION" '.version = $v' package.json)"
+echo -E "${package}" > package.json
+
+touch yarn.lock
+yarn config set enableImmutableInstalls false
+yarn config set npmAuthToken "$NODE_AUTH_TOKEN"
+yarn
+
+yarn npm publish --access public $TAG
