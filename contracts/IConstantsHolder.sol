@@ -50,6 +50,11 @@ interface IConstantsHolder {
     // solhint-disable func-name-mixedcase
     // slither-disable-start naming-convention
     function ALRIGHT_DELTA() external view returns (uint256);
+    function BROADCAST_DELTA() external view returns (uint256);
+    function COMPLAINT_BAD_DATA_DELTA() external view returns (uint256);
+    function PRE_RESPONSE_DELTA() external view returns (uint256);
+    function COMPLAINT_DELTA() external view returns (uint256);
+    function RESPONSE_DELTA() external view returns (uint256);
     function BOUNTY_LOCKUP_MONTHS() external view returns (uint256);
     function NODE_DEPOSIT() external view returns (uint256);
     function SECONDS_TO_YEAR() external view returns (uint32);
