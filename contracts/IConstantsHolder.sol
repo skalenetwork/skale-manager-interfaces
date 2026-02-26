@@ -45,7 +45,6 @@ interface IConstantsHolder {
     function setMinimalSchainLifetime(uint lifetime) external;
     function setComplaintTimeLimit(uint timeLimit) external;
     function setMinNodeBalance(uint newMinNodeBalance) external;
-    function reinitialize() external;
     // Corresponds to the public field
     // solhint-disable func-name-mixedcase
     // slither-disable-start naming-convention
