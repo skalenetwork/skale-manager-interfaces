@@ -39,6 +39,7 @@ interface IBountyV2 {
     function enableBountyReduction() external;
     function disableBountyReduction() external;
     function setNodeCreationWindowSeconds(uint window) external;
+    function setProgressiveMsrActivationMonth(uint256 month) external;
     function handleDelegationAdd(uint amount, uint month) external;
     function handleDelegationRemoving(uint amount, uint month) external;
     function estimateBounty(uint nodeIndex) external view returns (uint);
