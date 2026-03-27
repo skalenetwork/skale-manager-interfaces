@@ -21,6 +21,11 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
+import {IBountyV2} from "./IBountyV2.sol";
+import {IConstantsHolder} from "./IConstantsHolder.sol";
+import {ITimeHelpers} from "./delegation/ITimeHelpers.sol";
+
+
 interface IContractManager {
     /**
      * @dev Emitted when contract is upgraded.
@@ -31,10 +36,10 @@ interface IContractManager {
     function setContractsAddress(string calldata contractsName, address newContractsAddress) external;
     function contracts(bytes32 nameHash) external view returns (address);
     function getDelegationPeriodManager() external view returns (address);
-    function getBounty() external view returns (address);
+    function getBounty() external view returns (IBountyV2);
     function getValidatorService() external view returns (address);
-    function getTimeHelpers() external view returns (address);
-    function getConstantsHolder() external view returns (address);
+    function getTimeHelpers() external view returns (ITimeHelpers);
+    function getConstantsHolder() external view returns (IConstantsHolder);
     function getSkaleToken() external view returns (address);
     function getTokenState() external view returns (address);
     function getPunisher() external view returns (address);
