@@ -53,9 +53,13 @@ interface INodeRotation {
         external
         returns (uint newNode);
     function selectNodeToGroup(bytes32 schainHash) external returns (uint nodeIndex);
-    function getRotation(bytes32 schainHash) external view returns (Rotation memory);
-    function getLeavingHistory(uint nodeIndex) external view returns (LeavingHistory[] memory);
-    function isRotationInProgress(bytes32 schainHash) external view returns (bool);
+
+
+    function isSchainCreation(bytes32 schainHash) external view returns (bool);
     function isNewNodeFound(bytes32 schainHash) external view returns (bool);
+    function isRotationInProgress(bytes32 schainHash) external view returns (bool);
+    function getLeavingHistory(uint nodeIndex) external view returns (LeavingHistory[] memory);
+    function getOSet(bytes32 schainHash) external view returns (uint256[] memory);
     function getPreviousNode(bytes32 schainHash, uint256 nodeIndex) external view returns (uint256);
+    function getRotation(bytes32 schainHash) external view returns (Rotation memory);
 }
