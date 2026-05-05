@@ -60,4 +60,5 @@ interface INodeRotation {
     function getLeavingHistory(uint nodeIndex) external view returns (LeavingHistory[] memory);
     function getPreviousNode(bytes32 schainHash, uint256 nodeIndex) external view returns (uint256);
     function getRotation(bytes32 schainHash) external view returns (Rotation memory);
+    function shouldSendBroadcast(bytes32 schainHash, uint256 node) external view returns (bool);
 }
