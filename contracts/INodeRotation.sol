@@ -41,6 +41,7 @@ interface INodeRotation {
     }
 
     function exitFromSchain(uint nodeIndex) external returns (bool, bool);
+    function finalizeRotation(bytes32 schain) external;
     function freezeSchains(uint nodeIndex) external;
     function removeRotation(bytes32 schainHash) external;
     function skipRotationDelay(bytes32 schainHash) external;
