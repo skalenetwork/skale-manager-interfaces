@@ -84,7 +84,7 @@ interface ISkaleDKG {
     /**
      * @dev Emitted when all group data is received by node.
      */
-    event AllDataReceived(bytes32 indexed schainHash, uint nodeIndex);
+    event AllDataReceived(bytes32 indexed schainHash, uint256 indexed nodeIndex);
 
     /**
      * @dev Emitted when DKG is successful.
