@@ -24,6 +24,7 @@ pragma solidity >=0.6.10 <0.9.0;
 import {IBountyV2} from "./IBountyV2.sol";
 import {IConstantsHolder} from "./IConstantsHolder.sol";
 import {ITimeHelpers} from "./delegation/ITimeHelpers.sol";
+import {INodes} from "./INodes.sol";
 
 
 interface IContractManager {
@@ -43,5 +44,6 @@ interface IContractManager {
     function getSkaleToken() external view returns (address);
     function getTokenState() external view returns (address);
     function getPunisher() external view returns (address);
+    function getNodes() external view returns (INodes);
     function getContract(string calldata name) external view returns (address);
 }
