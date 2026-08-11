@@ -63,7 +63,7 @@ interface INodeRotation {
     function isValidData(
         uint256 nextDkr,
         uint256 nodeIndex,
-        ISkaleDKG.KeyShare calldata secretKeyContribution,
+        ISkaleDKG.KeyShare[] calldata secretKeyContribution,
         ISkaleDKG.G2Point[] calldata verificationVector
     )
         external
