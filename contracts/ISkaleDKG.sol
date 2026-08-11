@@ -84,7 +84,7 @@ interface ISkaleDKG {
     /**
      * @dev Emitted when all group data is received by node.
      */
-    event AllDataReceived(bytes32 indexed schainHash, uint nodeIndex);
+    event AllDataReceived(bytes32 indexed schainHash, uint256 indexed nodeIndex);
 
     /**
      * @dev Emitted when DKG is successful.
@@ -168,6 +168,7 @@ interface ISkaleDKG {
     function getComplaintStartedTime(bytes32 schainHash) external view returns (uint);
     function getNumberOfBroadcasted(bytes32 schainHash) external view returns (uint);
     function getNumberOfCompleted(bytes32 schainHash) external view returns (uint);
+    function getTargetBroadcastNumber(bytes32 schainHash) external view returns (uint256 targetBroadcastNumber);
     function getTimeOfLastSuccessfulDKG(bytes32 schainHash) external view returns (uint);
     function isAllDataReceived(bytes32 schainHash, uint nodeIndex) external view returns (bool);
     function isAlrightPossible(bytes32 schainHash, uint nodeIndex) external view returns (bool);

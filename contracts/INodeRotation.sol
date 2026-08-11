@@ -21,6 +21,8 @@
 
 pragma solidity >=0.6.10 <0.9.0;
 
+import { ISkaleDKG } from "./ISkaleDKG.sol";
+
 interface INodeRotation {
     /**
      * nodeIndex - index of Node which is in process of rotation (left from schain)
@@ -41,6 +43,7 @@ interface INodeRotation {
     }
 
     function exitFromSchain(uint nodeIndex) external returns (bool, bool);
+    function finalizeRotation(bytes32 schain) external;
     function freezeSchains(uint nodeIndex) external;
     function removeRotation(bytes32 schainHash) external;
     function skipRotationDelay(bytes32 schainHash) external;
@@ -53,9 +56,22 @@ interface INodeRotation {
         external
         returns (uint newNode);
     function selectNodeToGroup(bytes32 schainHash) external returns (uint nodeIndex);
-    function getRotation(bytes32 schainHash) external view returns (Rotation memory);
-    function getLeavingHistory(uint nodeIndex) external view returns (LeavingHistory[] memory);
-    function isRotationInProgress(bytes32 schainHash) external view returns (bool);
+
+    function isSchainCreation(bytes32 schainHash) external view returns (bool);
     function isNewNodeFound(bytes32 schainHash) external view returns (bool);
+    function isRotationInProgress(bytes32 schainHash) external view returns (bool);
+    function isValidData(
+        uint256 nextDkr,
+        uint256 nodeIndex,
+        ISkaleDKG.KeyShare[] calldata secretKeyContribution,
+        ISkaleDKG.G2Point[] calldata verificationVector
+    )
+        external
+        view
+        returns (bool valid);
+    function getLeavingHistory(uint nodeIndex) external view returns (LeavingHistory[] memory);
     function getPreviousNode(bytes32 schainHash, uint256 nodeIndex) external view returns (uint256);
+    function getPreviousNodeIndex(uint256 nextDkr, uint256 node) external view returns (uint256 nodeIndex);
+    function getRotation(bytes32 schainHash) external view returns (Rotation memory);
+    function shouldSendBroadcast(bytes32 schainHash, uint256 node) external view returns (bool);
 }
