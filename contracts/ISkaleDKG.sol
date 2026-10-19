@@ -107,11 +107,6 @@ interface ISkaleDKG {
     event NewGuy(uint nodeIndex);
 
     /**
-     * @dev Emitted when an incorrect complaint is sent.
-     */
-    event ComplaintError(string error);
-
-    /**
      * @dev Emitted when a complaint is sent.
      */
     event ComplaintSent(bytes32 indexed schainHash, uint indexed fromNodeIndex, uint indexed toNodeIndex);
