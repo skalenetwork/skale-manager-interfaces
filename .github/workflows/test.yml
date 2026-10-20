@@ -3,7 +3,7 @@ on: [push]
 
 env:
   NODE_VERSION: 24
-  PYTHON_VERSION: 3.9
+  PYTHON_VERSION: 3.11
 
 jobs:
   test:
