@@ -42,4 +42,4 @@ touch yarn.lock
 yarn config set enableImmutableInstalls false
 yarn
 
-yarn npm publish --access public $TAG --provenance
+yarn npm publish --access public $TAG
