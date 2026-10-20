@@ -40,7 +40,6 @@ echo -E "${package}" > package.json
 
 touch yarn.lock
 yarn config set enableImmutableInstalls false
-yarn config set npmPublishProvenance true
 yarn
 
-yarn npm publish --access public $TAG
+yarn npm publish --access public $TAG --provenance
