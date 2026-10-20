@@ -14,6 +14,10 @@ on:
 env:
   NODE_VERSION: 24
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -47,7 +51,6 @@ jobs:
       run: ./scripts/publish_package.sh
       env:
         BRANCH: ${{ env.BRANCH }}
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Create Release
       uses: ncipollo/release-action@v1
@@ -69,9 +72,7 @@ jobs:
         cache: 'yarn'
 
     - name: Remove feature tag
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: |
         export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
         echo "Source branch: $SOURCE_BRANCH"
-        npm --//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN dist-tag rm @skalenetwork/skale-manager-interfaces $SOURCE_BRANCH
+        npm dist-tag rm @skalenetwork/skale-manager-interfaces $SOURCE_BRANCH
