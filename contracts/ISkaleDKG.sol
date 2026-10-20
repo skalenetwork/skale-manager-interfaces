@@ -143,7 +143,6 @@ interface ISkaleDKG {
         G2Point memory multipliedShare
     )
         external;
-    function setBadNode(bytes32 schainHash, uint nodeIndex) external;
     function setStartAlrightTimestamp(bytes32 schainHash) external;
 
     // External view
