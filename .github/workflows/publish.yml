@@ -21,6 +21,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.merged
     steps:
     - uses: actions/checkout@v4
 
@@ -69,11 +70,10 @@ jobs:
       uses: actions/setup-node@v6
       with:
         node-version: ${{ env.NODE_VERSION }}
-        cache: 'yarn'
 
     - name: Remove feature tag
       run: |
-        export SOURCE_BRANCH=${GITHUB_HEAD_REF##*/}
+        export SOURCE_BRANCH=$(echo ${GITHUB_HEAD_REF##*/} | tr [:upper:] [:lower:] | tr -d [:space:])
         echo "Source branch: $SOURCE_BRANCH"
         npm install -g npm@latest
         npm dist-tag rm @skalenetwork/skale-manager-interfaces $SOURCE_BRANCH
