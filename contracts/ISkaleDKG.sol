@@ -54,6 +54,7 @@ interface ISkaleDKG {
         bool isResponse;
         bytes32 keyShare;
         G2Point sumOfVerVec;
+        bytes32[2] keySharePublicKey;
     }
 
     struct KeyShare {
